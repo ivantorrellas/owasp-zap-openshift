@@ -1,7 +1,12 @@
 # This dockerfile builds the zap stable release
 FROM registry.access.redhat.com/openshift3/jenkins-slave-base-rhel7:v3.6
 
-RUN yum install -y epel-release && \
+RUN yum-config-manager --enable rhel-server-rhscl-7-rpms && \
+    yum-config-manager --enable rhel-7-server-optional-rpms && \
+    yum-config-manager --enable rhel-server-rhscl-8-rpms && \
+    yum-config-manager --enable rhel-8-server-optional-rpms && \
+    yum-config-manager --disable epel >/dev/null || : && \
+    yum install -y epel-release && \
     yum clean all
 RUN yum install -y redhat-rpm-config \
     make automake autoconf gcc gcc-c++ \
