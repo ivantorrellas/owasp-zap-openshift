@@ -6,8 +6,8 @@ RUN yum-config-manager --enable rhel-server-rhscl-7-rpms && \
     yum-config-manager --enable rhel-server-rhscl-8-rpms && \
     yum-config-manager --enable rhel-8-server-optional-rpms && \
     yum-config-manager --disable epel >/dev/null || : && \
-    yum install -y epel-release && \
-    yum clean all
+    yum install -y epel-release
+    
 RUN yum install -y redhat-rpm-config \
     make automake autoconf gcc gcc-c++ \
     libstdc++ libstdc++-devel \
