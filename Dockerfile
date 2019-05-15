@@ -1,6 +1,5 @@
 # This dockerfile builds the zap stable release
-FROM centos:centos7
-MAINTAINER Deven Phillips <deven.phillips@redhat.com>
+FROM registry.access.redhat.com/openshift3/jenkins-slave-base-rhel7:v3.6
 
 RUN yum install -y epel-release && \
     yum clean all
